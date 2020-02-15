@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import androidx.navigation.ui.*
 import com.google.android.material.navigation.NavigationView
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -58,12 +59,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
+        val options = navOptions {
+            anim {
+                enter = R.anim.slide_in_right
+                exit = R.anim.slide_out_left
+                popEnter = R.anim.slide_in_left
+                popExit = R.anim.slide_out_right
+            }
+        }
+
         when(id){
             R.id.nav_camera->""
             R.id.nav_gallery->""
             R.id.nav_send->""
-            R.id.nav_settings->navController.navigate(R.id.seetingsFragment)
-            R.id.nav_about->navController.navigate(R.id.aboutFragment)
+            R.id.nav_settings->navController.navigate(R.id.seetingsFragment, null, options)
+            R.id.nav_about->navController.navigate(R.id.aboutFragment, null, options)
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
