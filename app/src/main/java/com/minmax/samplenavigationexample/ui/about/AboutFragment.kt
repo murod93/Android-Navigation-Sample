@@ -1,4 +1,4 @@
-package com.minmax.samplenavigationexample
+package com.minmax.samplenavigationexample.ui.about
 
 
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import com.minmax.samplenavigationexample.R
 
 /**
  * A simple [Fragment] subclass.

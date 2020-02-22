@@ -1,19 +1,18 @@
-package com.minmax.samplenavigationexample
+package com.minmax.samplenavigationexample.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import androidx.navigation.ui.*
 import com.google.android.material.navigation.NavigationView
+import com.minmax.samplenavigationexample.R
+
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     lateinit var drawerLayout:DrawerLayout
@@ -69,11 +68,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         when(id){
-            R.id.nav_camera->""
-            R.id.nav_gallery->""
-            R.id.nav_send->""
-            R.id.nav_settings->navController.navigate(R.id.seetingsFragment, null, options)
-            R.id.nav_about->navController.navigate(R.id.aboutFragment, null, options)
+            R.id.nav_settings ->navController.navigate(R.id.settingsFragment, null, options)
+            R.id.nav_about ->navController.navigate(R.id.aboutFragment, null, options)
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
