@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.HandlerCompat.postDelayed
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -19,19 +20,14 @@ import com.minmax.samplenavigationexample.R
 /**
  * A simple [Fragment] subclass.
  */
-class SplashFragment : Fragment() {
+class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     private val viewModel: SplashViewModel by activityViewModels()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        requireActivity().window?.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_splash, container, false)
-        val navController = findNavController()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        val navController = findNavController()
         Handler().postDelayed({
             viewModel.authState.observe(viewLifecycleOwner, Observer {authState->
                 when(authState!!){
@@ -42,13 +38,6 @@ class SplashFragment : Fragment() {
                 }
             })
         }, 2000)
-        return view
+
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        requireActivity().window?.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-    }
-
-
 }

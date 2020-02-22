@@ -3,6 +3,7 @@ package com.minmax.samplenavigationexample.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -39,12 +40,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView = findViewById(R.id.navigation_view)
         navController = findNavController(R.id.nav_host_fragment)
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id == R.id.splashFragment) {
+                supportActionBar?.hide()
+                navigationView.visibility = View.GONE
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            } else {
+                supportActionBar?.show()
+                navigationView.visibility = View.VISIBLE
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED)
+            }
+        }
+
         navigationView.setNavigationItemSelectedListener(this)
 
         appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
 
         setupActionBarWithNavController(navController, appBarConfiguration)
-
     }
 
     override fun onBackPressed() {

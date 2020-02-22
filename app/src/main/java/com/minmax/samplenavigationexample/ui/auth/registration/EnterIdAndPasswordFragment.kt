@@ -14,6 +14,8 @@ import com.minmax.samplenavigationexample.R
  */
 class EnterIdAndPasswordFragment : Fragment() {
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

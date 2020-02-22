@@ -6,12 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.minmax.samplenavigationexample.R
 
 /**
  * A simple [Fragment] subclass.
  */
 class LoginFragment : Fragment() {
+
+    private val viewModel:LoginViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
