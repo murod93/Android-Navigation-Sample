@@ -1,4 +1,4 @@
-package com.minmax.samplenavigationexample.ui
+package com.minmax.samplenavigationexample.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

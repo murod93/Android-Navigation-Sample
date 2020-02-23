@@ -74,14 +74,18 @@
             android:label="AboutFragment" />
         <fragment
             android:id="@+id/homeFragment"
-            android:name="com.minmax.samplenavigationexample.ui.HomeFragment"
+            android:name="com.minmax.samplenavigationexample.ui.home.HomeFragment"
             android:label="HomeFragment">
             <action
                 android:id="@+id/action_homeFragment_to_aboutFragment"
-                app:destination="@id/aboutFragment" />
+                app:destination="@id/aboutFragment"
+                app:popUpTo="@id/homeFragment"
+                app:popUpToInclusive="true"/>
             <action
                 android:id="@+id/action_homeFragment_to_seetingsFragment"
-                app:destination="@id/settingsFragment" />
+                app:destination="@id/settingsFragment"
+                app:popUpTo="@id/homeFragment"
+                app:popUpToInclusive="true"/>
         </fragment>
     </navigation>
 
