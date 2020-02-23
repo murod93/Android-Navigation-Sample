@@ -54,7 +54,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/sign_in_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
     <TextView
-        android:id="@+id/registration_view"
+        android:id="@+id/registration_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"

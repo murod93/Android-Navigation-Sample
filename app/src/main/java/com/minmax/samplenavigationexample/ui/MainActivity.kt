@@ -41,20 +41,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navController = findNavController(R.id.nav_host_fragment)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if(destination.id == R.id.splashFragment) {
-                supportActionBar?.hide()
-                navigationView.visibility = View.GONE
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-            } else {
-                supportActionBar?.show()
-                navigationView.visibility = View.VISIBLE
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED)
+            navigationView.visibility = View.GONE
+            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+
+            when(destination.id){
+                R.id.splashFragment->supportActionBar?.hide()
+                R.id.homeFragment->{
+                    supportActionBar?.show()
+                    navigationView.visibility = View.VISIBLE
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED)
+                }else->{
+                    supportActionBar?.show()
+                }
             }
         }
 
         navigationView.setNavigationItemSelectedListener(this)
 
-        appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
+        val topLevelDestinations = setOf(R.id.homeFragment)
+        appBarConfiguration = AppBarConfiguration.Builder(topLevelDestinations)
+            .setDrawerLayout(drawerLayout)
+            .build()
 
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
@@ -64,6 +71,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawerLayout.closeDrawer(GravityCompat.START)
         }else{
             super.onBackPressed()
+            if (!navController.popBackStack()) {
+                // Call finish() on your Activity
+                finish()
+            }
         }
     }
 

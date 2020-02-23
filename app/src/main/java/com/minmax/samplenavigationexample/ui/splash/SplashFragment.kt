@@ -28,6 +28,7 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
         super.onViewCreated(view, savedInstanceState)
 
         val navController = findNavController()
+
         Handler().postDelayed({
             viewModel.authState.observe(viewLifecycleOwner, Observer {authState->
                 when(authState!!){
