@@ -2,6 +2,7 @@ package com.minmax.samplenavigationexample.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.Toolbar
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             when(destination.id){
                 R.id.splashFragment->supportActionBar?.hide()
+                R.id.loginFragment ->supportActionBar?.hide()
                 R.id.homeFragment->{
                     supportActionBar?.show()
                     navigationView.visibility = View.VISIBLE
@@ -69,7 +71,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START)
-        }else{
+        }
+//        else if(navController.currentDestination!!.id == R.id.homeFragment){
+//            Log.e("MainActivity", "onBack")
+//            finish()
+//        }
+        else{
             super.onBackPressed()
             if (!navController.popBackStack()) {
                 // Call finish() on your Activity
@@ -91,8 +98,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         when(id){
-            R.id.nav_settings ->navController.navigate(R.id.settingsFragment, null, options)
-            R.id.nav_about ->navController.navigate(R.id.aboutFragment, null, options)
+            R.id.nav_settings ->navController.navigate(R.id.action_homeFragment_to_seetingsFragment, null, options)
+            R.id.nav_about ->navController.navigate(R.id.action_homeFragment_to_aboutFragment, null, options)
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true

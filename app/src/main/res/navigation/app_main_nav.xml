@@ -16,8 +16,9 @@
             />
         <action
             android:id="@+id/action_splashFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@+id/splashFragment"
+            app:destination="@id/main_graph"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/main_graph"
             app:popUpToInclusive="true"
             />
     </fragment>
@@ -32,7 +33,7 @@
 
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
+            app:destination="@id/main_graph"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true"/>
     </fragment>
@@ -54,25 +55,34 @@
             android:label="EnterIdAndPasswordFragment" />
     </navigation>
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.minmax.samplenavigationexample.ui.HomeFragment"
-        android:label="HomeFragment" >
-        <action
-            android:id="@+id/action_homeFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_seetingsFragment"
-            app:destination="@id/settingsFragment" />
-    </fragment>
+    <action
+        android:id="@+id/action_global_loginScreen"
+        app:destination="@id/loginFragment"
+        app:popUpTo="@+id/main_graph"
+        app:popUpToInclusive="true" />
 
-    <fragment
-        android:id="@+id/aboutFragment"
-        android:name="com.minmax.samplenavigationexample.ui.about.AboutFragment"
-        android:label="AboutFragment" />
+    <navigation
+        android:id="@+id/main_graph"
+        app:startDestination="@id/homeFragment" >
+        <fragment
+            android:id="@+id/settingsFragment"
+            android:name="com.minmax.samplenavigationexample.ui.settings.SettingsFragment"
+            android:label="SettingsFragment" />
+        <fragment
+            android:id="@+id/aboutFragment"
+            android:name="com.minmax.samplenavigationexample.ui.about.AboutFragment"
+            android:label="AboutFragment" />
+        <fragment
+            android:id="@+id/homeFragment"
+            android:name="com.minmax.samplenavigationexample.ui.HomeFragment"
+            android:label="HomeFragment">
+            <action
+                android:id="@+id/action_homeFragment_to_aboutFragment"
+                app:destination="@id/aboutFragment" />
+            <action
+                android:id="@+id/action_homeFragment_to_seetingsFragment"
+                app:destination="@id/settingsFragment" />
+        </fragment>
+    </navigation>
 
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.minmax.samplenavigationexample.ui.settings.SettingsFragment"
-        android:label="SettingsFragment" />
 </navigation>
