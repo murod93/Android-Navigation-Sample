@@ -72,12 +72,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START)
         }
-//        else if(navController.currentDestination!!.id == R.id.homeFragment){
-//            Log.e("MainActivity", "onBack")
-//            finish()
-//        }
+        else if(navController.currentDestination!!.id == R.id.homeFragment){
+            finish()
+        }
         else{
-            super.onBackPressed()
             if (!navController.popBackStack()) {
                 // Call finish() on your Activity
                 finish()

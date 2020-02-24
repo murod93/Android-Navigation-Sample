@@ -15,6 +15,6 @@ class SplashViewModel : ViewModel(){
     val authState:LiveData<AuthState> = _authState
 
     init {
-        _authState.value = AuthState.AUTHENTICATED
+        _authState.value = AuthState.UNAUTHENTICATED
     }
 }
