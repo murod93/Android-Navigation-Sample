@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         navigationView.setNavigationItemSelectedListener(this)
 
-        val topLevelDestinations = setOf(R.id.homeFragment)
+        val topLevelDestinations = setOf(R.id.homeFragment, R.id.loginFragment)
         appBarConfiguration = AppBarConfiguration.Builder(topLevelDestinations)
             .setDrawerLayout(drawerLayout)
             .build()
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START)
         }
-        else if(navController.currentDestination!!.id == R.id.homeFragment){
+        else if(navController.currentDestination?.id == R.id.homeFragment){
             finish()
         }
         else{
